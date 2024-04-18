@@ -17,6 +17,11 @@ class WorkWithVacanciesAbstract(ABC):
     def __lt__(self, other):
         pass
 
+    @abstractmethod
+    def to_JSON(self):
+        """Абстрактный метод, насколько я понял, для конвертации информации которая будет добавлена в файл JSON"""
+        pass
+
 
 class WorkWithVacancies(WorkWithVacanciesAbstract):
     """Класс для работы с вакансиями
@@ -49,6 +54,16 @@ class WorkWithVacancies(WorkWithVacanciesAbstract):
 
     def __lt__(self, other):
         return self.salary_to < other.salary_to
+
+    def to_JSON(self):
+        """Метод для подготовки информации к записи в файл JSON"""
+        return {
+            'name': self.name,
+            'link_to_vacancy': self.link_to_vacancy,
+            'salary_from': self.salary_from,
+            'salary_to': self.salary_to,
+            'requirements': self.requirements
+        }
 
 
 class HHAPIAbstract(ABC):

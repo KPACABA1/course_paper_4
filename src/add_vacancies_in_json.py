@@ -31,7 +31,7 @@ class WorkWithJSON(WorkWithJSONAbstract):
     @staticmethod
     def add_json(vacancies):
         """Метод для добавления вакансий в файл JSON"""
-        with open('../vacancies.json', mode='w', encoding='utf-8') as vacancies_json:
+        with open('vacancies.json', mode='w', encoding='utf-8') as vacancies_json:
             json.dump([v.to_JSON() for v in vacancies], vacancies_json, indent=4, ensure_ascii=False)
 
     @classmethod
